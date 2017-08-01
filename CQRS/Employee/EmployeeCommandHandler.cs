@@ -1,12 +1,11 @@
-﻿using CQRSlite.Commands;
-using CQRSlite.Domain;
+﻿using CQRSlite.Domain;
 
 namespace CQRS.Employee
 {
     /// <summary>
     /// Handles commands for an <see cref="Employee"/>
     /// </summary>
-    public class EmployeeCommandHandler : ICommandHandler<Employee>
+    public class EmployeeCommandHandler : ICommandHandler<CreateEmployeeCommand>
     {
         private readonly ISession session;
 

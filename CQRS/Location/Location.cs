@@ -29,6 +29,8 @@ namespace CQRS.Location
             this.state = state;
             this.postalCode = postalCode;
 
+            employees = new List<int>();
+
             ApplyChange(new LocationCreatedEvent(id, locationID, streetAddress, city, state, postalCode));
         }
 

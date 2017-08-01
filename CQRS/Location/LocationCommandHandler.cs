@@ -1,9 +1,4 @@
-﻿using CQRSlite.Commands;
-using CQRSlite.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CQRSlite.Domain;
 
 namespace CQRS.Location
 {
@@ -39,7 +34,7 @@ namespace CQRS.Location
         {
             var location = await session.Get<Location>(command.Id);
             location.RemoveEmployee(command.EmployeeID);
-            await session.Commit()
+            await session.Commit();
         }
     }
 }
