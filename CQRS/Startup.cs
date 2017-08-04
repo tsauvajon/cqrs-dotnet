@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +11,15 @@ using StackExchange.Redis;
 using CQRS.Employee;
 using CQRS.Location;
 using Microsoft.Extensions.Configuration;
+using StructureMap.Graph;
+using CQRSlite.Bus;
+using CQRSlite.Commands;
+using CQRSlite.Events;
+using StructureMap.Web;
+using CQRSlite.Domain;
+using CQRSlite.Cache;
+using CQRSCode.WriteModel;
+using AutoMapper;
 
 namespace CQRS
 {
@@ -27,6 +34,7 @@ namespace CQRS
             // Add framework services.
             services.AddMvc();
             services.AddRouting();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public Startup(IHostingEnvironment env)
@@ -76,20 +84,37 @@ namespace CQRS
 
             container.Configure(config =>
             {
-                config.Scan(_ =>
+                config.Scan(scan =>
                 {
-                    _.AssemblyContainingType(typeof(Startup));
-                    _.WithDefaultConventions();
-                    _.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
+                    scan.AssemblyContainingType(typeof(Startup));
+                    scan.WithDefaultConventions();
+                    scan.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
+                    scan.TheCallingAssembly();
+                    scan.AssemblyContainingType<BaseEvent>();
+                    scan.Convention<FirstInterfaceConvention>();
                 });
 
                 // Repos
                 config.For<IEmployeeRepository>().Use<EmployeeRepository>();
                 config.For<ILocationRepository>().Use<LocationRepository>();
 
-                //StackExchange.Redis
+                // StackExchange.Redis
                 ConnectionMultiplexer multiplexer = ConnectionMultiplexer.Connect("localhost");
                 config.For<IConnectionMultiplexer>().Use(multiplexer);
+
+                // CQRSLite
+                config.For<InProcessBus>().Singleton().Use<InProcessBus>();
+                config.For<ICommandSender>().Use(y => y.GetInstance<InProcessBus>());
+                config.For<IEventPublisher>().Use(y => y.GetInstance<InProcessBus>());
+                //config.For<ICache>().Use(y => y.GetInstance<InProcessBus>()); // Test
+                config.For<IHandlerRegistrar>().Use(y => y.GetInstance<InProcessBus>());
+                config.For<CQRSlite.Domain.ISession>().HybridHttpOrThreadLocalScoped().Use<Session>();
+                config.For<IEventStore>().Singleton().Use<InMemoryEventStore>();
+                config.For<IRepository>().HybridHttpOrThreadLocalScoped().Use(y =>
+                    new CacheRepository(new Repository(y.GetInstance<IEventStore>()), y.GetInstance<IEventStore>(), new MemoryCache()));
+
+                // AutoMapper
+                // automatic with services.AddAutoMapper(...) ??
 
                 //config.Populate(services);
             });
