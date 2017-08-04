@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using CQRSlite.Messages;
+using CQRS.CQRSCode;
 
 namespace CQRS.Employee
 {

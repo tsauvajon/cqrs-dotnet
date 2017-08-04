@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CQRS.Employee;
 using StackExchange.Redis;
+using CQRS.CQRSCode;
 
 namespace CQRS.Location
 {

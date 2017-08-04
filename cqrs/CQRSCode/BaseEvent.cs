@@ -1,7 +1,7 @@
 ﻿using CQRSlite.Events;
 using System;
 
-namespace CQRS
+namespace CQRS.CQRSCode
 {
     /// <summary>
     /// Base for an event

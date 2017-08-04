@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using CQRSlite.Events;
 
-namespace CQRSCode.WriteModel
+namespace CQRS.CQRSCode.WriteModel
 {
     public class InMemoryEventStore : IEventStore
     {

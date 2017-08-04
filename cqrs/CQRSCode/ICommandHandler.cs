@@ -1,6 +1,6 @@
 ﻿using CQRSlite.Commands;
 
-namespace CQRS
+namespace CQRS.CQRSCode
 {
     /// <summary>
     /// Generic Command Handler

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CQRS.CQRSCode;
+using System.Collections.Generic;
 
 namespace CQRS.Employee
 {

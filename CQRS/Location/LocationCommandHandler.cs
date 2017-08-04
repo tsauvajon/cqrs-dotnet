@@ -1,4 +1,5 @@
-﻿using CQRSlite.Domain;
+﻿using CQRS.CQRSCode;
+using CQRSlite.Domain;
 
 namespace CQRS.Location
 {

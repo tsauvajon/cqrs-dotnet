@@ -18,8 +18,9 @@ using CQRSlite.Events;
 using StructureMap.Web;
 using CQRSlite.Domain;
 using CQRSlite.Cache;
-using CQRSCode.WriteModel;
+using CQRS.CQRSCode.WriteModel;
 using AutoMapper;
+using CQRS.CQRSCode;
 
 namespace CQRS
 {

@@ -1,7 +1,7 @@
 ﻿using CQRSlite.Commands;
 using System;
 
-namespace CQRS
+namespace CQRS.CQRSCode
 {
     /// <summary>
     /// Base for a command

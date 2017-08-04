@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CQRS.CQRSCode;
+using System;
 
 namespace CQRS.Employee
 {

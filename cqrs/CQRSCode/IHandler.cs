@@ -1,7 +1,7 @@
 ﻿using CQRSlite.Messages;
 using System.Threading.Tasks;
 
-namespace CQRS
+namespace CQRS.CQRSCode
 {
     /// <summary>
     /// Generic Handler
