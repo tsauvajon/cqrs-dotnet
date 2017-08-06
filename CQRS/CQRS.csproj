@@ -15,8 +15,8 @@
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="2.0.1" />
     <PackageReference Include="CqrsLite" Version="0.14.4" />
-    <PackageReference Include="FluentValidation" Version="7.1.1" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="7.1.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
@@ -27,7 +27,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="StackExchange.Redis" Version="1.2.5" />
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
     <PackageReference Include="StructureMap" Version="4.5.1" />
     <PackageReference Include="StructureMap.WebApi2" Version="3.0.4.125" />
   </ItemGroup>

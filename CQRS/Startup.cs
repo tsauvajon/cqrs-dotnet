@@ -21,6 +21,7 @@ using CQRSlite.Cache;
 using CQRS.CQRSCode.WriteModel;
 using AutoMapper;
 using CQRS.CQRSCode;
+using FluentValidation.AspNetCore;
 
 namespace CQRS
 {
@@ -33,7 +34,7 @@ namespace CQRS
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddRouting();
             services.AddAutoMapper(typeof(Startup));
         }
